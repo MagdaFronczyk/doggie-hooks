@@ -5,19 +5,27 @@ function App() {
 
   const [pics, setPics] = useState([]);
   const [query, setQuery] = useState("");
-  const [search, setSearch] = useState("")
+  const [search, setSearch] = useState("");
+  const [isLoading, setLoading] = useState(false);
+  const [isError, setError] = useState(false);
 
   useEffect(() => {
-    fetch(`https://dog.ceo/api/breed/${search}/images`)
-      .then(res => {
-        if (!res.ok) {
-          throw Error(res.statusText);
-        }
-        return res;
-      })
-      .then(res => res.json())
-      .then(res => setPics(res.message))
-      .catch(err => console.log(err))
+    if (search) {
+      setLoading(true);
+      fetch(`https://dog.ceo/api/breed/${search}/images`)
+        .then(res => {
+          if (!res.ok) {
+            setLoading(false);
+            setError(false);
+            throw new Error(res.statusText)
+          }
+          setLoading(false);
+          return res;
+        })
+        .then(res => res.json())
+        .then(res => setPics(res.message))
+        .catch(error => setError(true))
+    }
   }, [search])
 
   return (
@@ -31,6 +39,8 @@ function App() {
       <button onClick={() => setSearch(query)}>
         search
       </button>
+      {isLoading && <div>Loading</div>}
+      {isError && <div>Something went wrong</div>}
       <ul>
         {pics.map((el, index) => (
           <li key={index}>
