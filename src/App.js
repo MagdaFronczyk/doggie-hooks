@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 
-function App() {
+const App = () => {
 
   const [pics, setPics] = useState([]);
   const [query, setQuery] = useState("");
@@ -16,35 +16,37 @@ function App() {
         .then(res => {
           if (!res.ok) {
             setLoading(false);
-            setError(false);
+            setError(true);
             throw new Error(res.statusText)
           }
           setLoading(false);
+          setError(false);
           return res;
         })
         .then(res => res.json())
         .then(res => setPics(res.message))
-        .catch(error => setError(true))
+        .catch(error => console.log(error))
     }
   }, [search])
 
   return (
     <div className="App">
-      <label htmlFor="">
-        find the doggie
+      <div className="search--wrapper">
+        <label htmlFor="search-term" className="search__label"> find the doggie </label>
         <input type="text"
+          name="search-term"
+          id="search-name"
+          className="search__input"
           value={query}
           onChange={e => setQuery(e.target.value)} />
-      </label>
-      <button onClick={() => setSearch(query)}>
-        search
-      </button>
-      {isLoading && <div>Loading</div>}
-      {isError && <div>Something went wrong</div>}
-      <ul>
+        <button className="search__button" onClick={() => setSearch(query)}>search</button>
+      </div>
+      {isLoading && <div className="data-loading">Loading</div>}
+      {isError && <div className="data-error">Something went wrong</div>}
+      <ul className="doggies-list">
         {pics.map((el, index) => (
-          <li key={index}>
-            <img src={el}></img>
+          <li key={index} classNam="doggie">
+            <img src={el} classNam="doggie__img"></img>
           </li>
         ))}
       </ul>
