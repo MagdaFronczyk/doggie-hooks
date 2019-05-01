@@ -1,3 +1,8 @@
+.App {
+  background-image: url(https://www.publicdomainpictures.net/pictures/250000/nahled/dog-cartoon-cute-background.jpg);
+  min-height: 100vh;
+}
+
 .search--wrapper {
   display: flex;
   justify-content: center;
@@ -26,7 +31,7 @@
   padding: 5px 20px;
   background-color: #AFD2E1;
   outline: none;
-  border: none;
+  border: 3px solid #AFD2E1;
   color: white;
   font-size: 36px;
 }
@@ -44,5 +49,72 @@
 
 .doggies-list img {
   height: 300px;
-  width: 400px
+  width: 400px;
+  object-fit: cover;
+}
+
+.lds-heart {
+  display: inline-block;
+  position: relative;
+  width: 64px;
+  height: 64px;
+  transform: rotate(45deg);
+  transform-origin: 32px 32px;
+  left: 50%;
+}
+
+.lds-heart div {
+  top: 23px;
+  left: 19px;
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  background: #F85F85;
+  animation: lds-heart 1.2s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.lds-heart div:after,
+.lds-heart div:before {
+  content: " ";
+  position: absolute;
+  display: block;
+  width: 26px;
+  height: 26px;
+  background: #F85F85;
+}
+
+.lds-heart div:before {
+  left: -17px;
+  border-radius: 50% 0 0 50%;
+}
+
+.lds-heart div:after {
+  top: -17px;
+  border-radius: 50% 50% 0 0;
+}
+
+@keyframes lds-heart {
+  0% {
+    transform: scale(0.95);
+  }
+
+  5% {
+    transform: scale(1.1);
+  }
+
+  39% {
+    transform: scale(0.85);
+  }
+
+  45% {
+    transform: scale(1);
+  }
+
+  60% {
+    transform: scale(0.95);
+  }
+
+  100% {
+    transform: scale(0.9);
+  }
 }

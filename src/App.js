@@ -17,6 +17,7 @@ const App = () => {
           if (!res.ok) {
             setLoading(false);
             setError(true);
+            setPics([]);
             throw new Error(res.statusText)
           }
           setLoading(false);
@@ -41,12 +42,12 @@ const App = () => {
           onChange={e => setQuery(e.target.value)} />
         <button className="search__button" onClick={() => setSearch(query)}>search</button>
       </div>
-      {isLoading && <div className="data-loading">Loading</div>}
+      {isLoading && <div className="lds-heart"><div></div></div>}
       {isError && <div className="data-error">Something went wrong</div>}
       <ul className="doggies-list">
         {pics.map((el, index) => (
-          <li key={index} classNam="doggie">
-            <img src={el} classNam="doggie__img"></img>
+          <li key={index} className="doggie">
+            <img src={el} className="doggie__img"></img>
           </li>
         ))}
       </ul>
