@@ -3,10 +3,10 @@
   min-height: 100vh;
 }
 
-.search--wrapper {
+.search-wrapper {
   display: flex;
   justify-content: center;
-  padding-top: 50px;
+  padding: 50px 0;
 }
 
 .search__label,
@@ -43,8 +43,10 @@
   align-items: center;
 }
 
-.doggies-list li {
+.doggies-list li,
+.favourite-doggies-list li {
   list-style: none;
+  position: relative;
 }
 
 .doggies-list img {
@@ -117,4 +119,37 @@
   100% {
     transform: scale(0.9);
   }
+}
+
+.doggie__heart {
+  font-size: 36px;
+  color: #F85F85;
+  position: absolute;
+  top: 15px;
+  left: 15px;
+}
+
+.data-error {
+  color: #4C4C4C;
+  font-size: 36px;
+  text-align: center;
+}
+
+.favourite-doggies__icon {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  font-size: 48px;
+}
+
+.favourite-doggies__list {
+  position: absolute;
+  top: 50px;
+  left: 10px
+}
+
+.favourite-doggies__list img {
+  height: 200px;
+  width: 300px;
+  object-fit: cover;
 }
