@@ -39,8 +39,7 @@
 .doggies-list {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
-  align-items: center;
+  padding: 20px;
 }
 
 .doggies-list li,
@@ -50,8 +49,8 @@
 }
 
 .doggies-list img {
-  height: 300px;
-  width: 400px;
+  height: 200px;
+  width: 300px;
   object-fit: cover;
 }
 
@@ -135,28 +134,20 @@
   text-align: center;
 }
 
-.favourite-doggies__icon {
-  position: fixed;
-  top: 10px;
-  left: 10px;
-}
-
 .favourite-doggies__list {
-  position: absolute;
-  top: 100px;
-  left: 10px
-}
-
-.favourite-doggies__paw {
-  font-size: 48px;
+  padding: 20px;
 }
 
 .favourite-doggies__list img {
-  height: 200px;
-  width: 300px;
+  height: 100px;
+  width: 200px;
   object-fit: cover;
 }
 
 .doggie__heart--liked {
   color: red;
+}
+
+.doggies-wrapper {
+  display: flex;
 }

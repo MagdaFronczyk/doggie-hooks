@@ -1,11 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHeart, faPaw } from '@fortawesome/free-solid-svg-icons'
 import './App.css';
 import Doggie from "./Doggie.jsx";
-
-library.add(faHeart, faPaw);
 
 const App = () => {
 
@@ -15,7 +10,6 @@ const App = () => {
   const [isLoading, setLoading] = useState(false);
   const [isError, setError] = useState(false);
   const [favourites, setFavourite] = useState([]);
-  const [mouseIsOver, setMouseIsOver] = useState(false);
 
   useEffect(() => {
     if (search) {
@@ -26,6 +20,7 @@ const App = () => {
             setLoading(false);
             setError(true);
             setPics([]);
+            setFavourite([]);
             throw new Error(res.statusText)
           }
           setLoading(false);
@@ -52,22 +47,21 @@ const App = () => {
       </div>
       {isLoading && <div className="lds-heart"><div></div></div>}
       {isError && <div className="data-error">Ooops, no such doggie in our database :(</div>}
-      <ul className="doggies-list">
-        {pics.map((el, index) => (
-          <Doggie item={el} index={index} favourites={favourites} onClick={() => setFavourite([...favourites, el].filter((el, i, arr) => arr.indexOf(el) === i))} />
-        ))}
-      </ul>
-      <div className="favourite-doggies-wrapper">
-        <div className="favourite-doggies__icon" onMouseEnter={() => setMouseIsOver(!mouseIsOver)} >
-          <FontAwesomeIcon icon="paw" className="favourite-doggies__paw" />
-        </div>
-        <ul className="favourite-doggies__list">
-          {mouseIsOver && favourites.map((el, index) => (
-            <li key={index}>
-              <img src={el} alt="" />
-            </li>
+      <div className="doggies-wrapper">
+        <ul className="doggies-list">
+          {pics.map((el, index) => (
+            <Doggie item={el} index={index} favourites={favourites} onClick={() => setFavourite([...favourites, el].filter((el, i, arr) => arr.indexOf(el) === i))} />
           ))}
         </ul>
+        {favourites.length > 0 && (
+          <ul className="favourite-doggies__list">
+            {favourites.map((el, index) => (
+              <li key={index}>
+                <img src={el} alt="" />
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
     </div>
   );
