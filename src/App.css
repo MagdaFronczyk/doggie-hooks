@@ -44,7 +44,7 @@
 }
 
 .doggies-list li,
-.favourite-doggies-list li {
+.favourite-doggies__list li {
   list-style: none;
   position: relative;
 }
@@ -139,17 +139,24 @@
   position: fixed;
   top: 10px;
   left: 10px;
-  font-size: 48px;
 }
 
 .favourite-doggies__list {
   position: absolute;
-  top: 50px;
+  top: 100px;
   left: 10px
+}
+
+.favourite-doggies__paw {
+  font-size: 48px;
 }
 
 .favourite-doggies__list img {
   height: 200px;
   width: 300px;
   object-fit: cover;
+}
+
+.doggie__heart--liked {
+  color: red;
 }

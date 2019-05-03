@@ -3,6 +3,7 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart, faPaw } from '@fortawesome/free-solid-svg-icons'
 import './App.css';
+import Doggie from "./Doggie.jsx";
 
 library.add(faHeart, faPaw);
 
@@ -53,15 +54,13 @@ const App = () => {
       {isError && <div className="data-error">Ooops, no such doggie in our database :(</div>}
       <ul className="doggies-list">
         {pics.map((el, index) => (
-          <li key={index} className="doggie">
-            <img src={el} className="doggie__img" alt=""></img>
-            <FontAwesomeIcon icon="heart" className="doggie__heart" onClick={() => setFavourite([...favourites, el].filter((el, i, arr) => arr.indexOf(el) === i))} />
-          </li>
+          <Doggie item={el} index={index} favourites={favourites} onClick={() => setFavourite([...favourites, el].filter((el, i, arr) => arr.indexOf(el) === i))} />
         ))}
       </ul>
       <div className="favourite-doggies-wrapper">
-        <div className="favourite-doggies__icon" onMouseEnter={() => setMouseIsOver(!mouseIsOver)} onMouseLeave={() => setMouseIsOver(!mouseIsOver)} > HOVER</div>
-        <FontAwesomeIcon icon="paw" />
+        <div className="favourite-doggies__icon" onMouseEnter={() => setMouseIsOver(!mouseIsOver)} >
+          <FontAwesomeIcon icon="paw" className="favourite-doggies__paw" />
+        </div>
         <ul className="favourite-doggies__list">
           {mouseIsOver && favourites.map((el, index) => (
             <li key={index}>
