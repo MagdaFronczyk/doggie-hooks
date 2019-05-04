@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
-import Doggie from "./Doggie.jsx";
+import Doggie from './Doggie.jsx';
+import Search from './Search.jsx';
 
 const App = () => {
 
@@ -35,16 +36,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <div className="search-wrapper">
-        <label htmlFor="search-term" className="search__label">find doggie</label>
-        <input type="text"
-          name="search-term"
-          id="search-name"
-          className="search__input"
-          value={query}
-          onChange={e => setQuery(e.target.value)} />
-        <button className="search__button" onClick={() => setSearch(query)}>search</button>
-      </div>
+      <Search onChange={e => setQuery(e.target.value)} onClick={() => setSearch(query)} value={query} />
       {isLoading && <div className="lds-heart"><div></div></div>}
       {isError && <div className="data-error">Ooops, no such doggie in our database :(</div>}
       <div className="doggies-wrapper">
