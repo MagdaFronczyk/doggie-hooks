@@ -13,7 +13,7 @@ const Doggie = ({ item, index, onClick }) => {
     return (
         <li key={index} className="doggie">
             <img src={item} className="doggie__img" alt=""></img>
-            <FontAwesomeIcon icon="heart" className={isLiked ? `doggie__heart doggie__heart--liked` : "doggie__heart"} onClick={() => { onClick(); setIsLiked(!isLiked) }} />
+            <FontAwesomeIcon icon="heart" className={isLiked ? `doggie__heart doggie__heart--liked` : "doggie__heart"} onClick={() => { onClick(); setIsLiked(true) }} />
         </li>
     )
 }

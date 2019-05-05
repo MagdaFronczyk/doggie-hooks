@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import Doggie from './Doggie.jsx';
 import Search from './Search.jsx';
+import DoggieFav from './DoggieFav';
 
 const App = () => {
 
@@ -42,15 +43,13 @@ const App = () => {
       <div className="doggies-wrapper">
         <ul className="doggies-list">
           {pics.map((el, index) => (
-            <Doggie item={el} index={index} favourites={favourites} onClick={() => setFavourite([...favourites, el].filter((el, i, arr) => arr.indexOf(el) === i))} />
+            <Doggie item={el} key={index} onClick={() => setFavourite([...favourites, el].filter((el, i, arr) => arr.indexOf(el) === i))} />
           ))}
         </ul>
         {favourites.length > 0 && (
           <ul className="favourite-doggies__list">
             {favourites.map((el, index) => (
-              <li key={index}>
-                <img src={el} alt="" />
-              </li>
+              <DoggieFav item={el} key={index} onClick={() => setFavourite([...favourites, el].filter(item => item !== el))} />
             ))}
           </ul>
         )}

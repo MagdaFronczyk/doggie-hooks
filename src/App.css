@@ -139,15 +139,23 @@
 }
 
 .favourite-doggies__list img {
-  height: 100px;
+  height: 120px;
   width: 200px;
   object-fit: cover;
 }
 
 .doggie__heart--liked {
-  color: red;
+  color: #ED2839;
 }
 
 .doggies-wrapper {
   display: flex;
+}
+
+.doggie__cross {
+  font-size: 24px;
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  color: #ED2839;
 }
